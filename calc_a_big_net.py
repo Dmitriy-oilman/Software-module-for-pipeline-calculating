@@ -14,7 +14,6 @@ for i in range(n_pipes):
                   b[i][1] = j
 
 
-# variables to calculate
 
 # variables to calculate
 T_for_iter = T.copy()
