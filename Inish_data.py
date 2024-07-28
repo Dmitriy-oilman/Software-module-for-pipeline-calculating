@@ -94,7 +94,7 @@ L[6] = 450 * 10^2 #pipe length
 
 # pressure in unknown nodes
 for i in unknown_nodes:
-      P[i] = 180 * 10**5 - i * 10**3
+      P[i] = 18 * 10**5 - i * 10**5
 
 P_for_iter = P.copy()
 SHU = n.zeros(shape=(1,n_pipes))
