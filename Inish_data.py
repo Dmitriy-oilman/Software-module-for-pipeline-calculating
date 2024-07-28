@@ -2,26 +2,6 @@ import numpy as n
 import math
 
 # connection matrix
-# old A matrix
-# A = n.array([[1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0], 
-#             [-1,  1,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-#             [ 0, -1,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-#             [ 0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-#             [ 0,  0,  0, -1, -1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  1,  0],
-#             [ 0,  0,  0,  0,  0, -1,  1,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-#             [ 0,  0,  0,  0,  0,  0, -1,  1,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-#             [ 0,  0,  0,  0,  0,  0,  0, -1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-#             [ 0,  0,  0,  0,  0,  0,  0,  0, -1, -1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-#             [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1, -1,  1, -1,  1,  0,  0,  0,  0,  0,  0,  0,  0],
-#             [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-#             [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  1,  1,  0, -1,  0,  0,  0,  0],
-#             [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0],
-#             [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0, -1,  1,  0, -1,  0,  0,  0],
-#             [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0],
-#             [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1, -1,  0,  0],
-#             [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1, -1, -1],
-#             [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1]])
-
 A = n.array([[1,  0,  0,  0,  0,  0,  0], 
             [-1,  1, -1,  0,  0,  0,  0],
             [ 0, -1,  0,  1,  1,  0,  0],
@@ -55,22 +35,12 @@ nu_avg = n.zeros(shape=(n_pipes,1))
 
 
 
-# known_nodes = [0, 3, 10, 12, 14, 17] #known nodes OLD
 known_nodes = [0, 5]
-
-# pressure in known nodes OLD
-# P[known_nodes[0]] = 150 * 10**5
-# P[known_nodes[1]] = 40 * 10**5             
-# P[known_nodes[2]] = 40 * 10**5
-# P[known_nodes[3]] = 150 * 10**5
-# P[known_nodes[4]] = 40 * 10**5
-# P[known_nodes[5]] = 120 * 10**5
 
 P[known_nodes[0]] = 190 * 10**5
 P[known_nodes[1]] = 120 * 10**5             
 
 
-# T[known_nodes[0]] = 30 #temperature at known nodes OLD
 
 T[known_nodes[0]] = 23 #temperature at known nodes OLD
 
@@ -80,13 +50,6 @@ for i in known_nodes:
     unknown_nodes.remove(i)
     
     
-# parameter for thermal calculation OLD
-# T_ground = 5
-# K_t = 10**9
-# K_temp = 1.7
-# kof_v_rs = 0.688 * 10**(-3)
-# Cp = 2100
-
 # parameter for thermal calculation
 T_ground = -10
 K_t = 10**9
@@ -99,23 +62,11 @@ d = n.zeros(shape=(n_pipes,1)) #pipe diameters
 delta = n.zeros(shape=(n_pipes,1)) #pipe roughness
 L = n.zeros(shape=(n_pipes,1)) #pipe length
 
-# parameters in nodes OLD
-# for i in range(n_nodes):
-#     T[i] = 30 + i
-#     z_nodes[i] = 50 + 3 * (i+1)
-#     ro[i] = 890
 
 for i in range(n_nodes):
     T[i] = 23 - 0.1 * i
     z_nodes[i] = 0
     ro[i] = 890
-
-
-# OLD
-# for i in range(n_pipes):
-#     d[i] = 1 #pipe diameters
-#     delta[i] = 0.1 * 10**(-3)  #pipe roughnesses
-#     L[i] = 120 * 10**3 #pipe length
 
 
 for i in range(n_pipes):
