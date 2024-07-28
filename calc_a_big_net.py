@@ -1,6 +1,6 @@
 import numpy as np
 import math
-import Find_Q_Lambd as func
+import Find_lambda as func
 from Inish_data import *
 import pandas as pd
 
